@@ -3,13 +3,15 @@
 // Найдтие сумму чисел от 1 до N.
 // N вводится с клавиатуры. Вывести сумму.
 
-int main() {
-    std::cout << "Sum numbers:" << std::endl;
-    int n, result = 0;
-    std::cin >> n;
-    for (int i = 1; i <= n; i++) {
-        result += i;
+using namespace std;
+
+int main()
+{
+    int sum, n, a;
+    cout << "n=\n";
+    cin >> n;
+    for (a=1; a <= n; a++) {
+        sum= sum + a;
     }
-    std::cout << "Result: " << result;
-    return 0;
+    cout << sum;
 }

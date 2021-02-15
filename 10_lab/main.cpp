@@ -2,7 +2,12 @@
 // с клавиатуры пользователем.
 
 #include <iostream>
+using namespace std;
 
-int main() {
-    std::cout << absolute_value(x) << std::endl;
+int main()
+{
+    float a;
+    cout << "Введите число\n";
+    cin >> a;
+    cout << "Абсолютное значение введённого числа:\n" << abs(a);
 }
