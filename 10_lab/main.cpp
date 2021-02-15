@@ -4,5 +4,16 @@
 #include <iostream>
 
 int main() {
-    std::cout << absolute_value(x) << std::endl;
+    std::cout << "Enter a number: ";
+    int a;
+    std::cin >> a;
+    int absolute_value;
+
+    if (a >= 0)
+        absolute_value = a;
+    else
+        absolute_value = -a;
+
+    std::cout << absolute_value << std::endl;
+    return(0);
 }
