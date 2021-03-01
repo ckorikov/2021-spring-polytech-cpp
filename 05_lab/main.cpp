@@ -4,12 +4,12 @@
 // N вводится с клавиатуры. Вывести сумму.
 
 int main() {
-    std::cout << "Sum numbers:" << std::endl;
-    int n, result = 0;
-    std::cin >> n;
-    for (int i = 1; i <= n; i++) {
-        result += i;
+    int N, sum = 0, i;
+    std::cout << "Enter the number:";
+    std::cin >> N;
+    for (i = 1; i <= N; i++) {
+        sum = sum + i;
     }
-    std::cout << "Result: " << result;
+    std::cout << "Result: " << sum << std::endl;
     return 0;
 }
