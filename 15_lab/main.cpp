@@ -4,6 +4,23 @@
 #include <iostream>
 
 int main() {
-    // Решение тут
+    int N, M, number=0, mul=1;
+
+    std::cin>>N>>M;
+    if(M==1)
+    {
+        for(int i=0; i<N; i++)
+        {
+            std::cout<<1;
+        }
+        return 0;
+    }
+    while(N>0) {
+        int system = N % M;
+        N = N / M;
+        number = number + system * mul;
+        mul = mul * 10;
+    }
+    std::cout << number << std::endl;
     return 0;
 }
