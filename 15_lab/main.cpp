@@ -5,30 +5,26 @@
 
 int main() {
     int N, M;
-    std::cout<<"Enter the number"<<std::endl;
-    std::cin>>N;
-    std::cout<<"Enter the numbering system"<<std::endl;
-    std::cin>>M;
-    if(M==1)
-    {
-        for(int i=0; i<N; i++)
-        {
-            std::cout<<1;
+    std::cout << "Enter the number" << std::endl;
+    std::cin >> N;
+    std::cout << "Enter the numeral system base (>0)" << std::endl;
+    std::cin >> M;
+    if (M == 1) {
+        for (int i = 0; i < N; i++) {
+            std::cout << 1;
         }
         return 0;
     }
-    std::cout<<"Inverse number: ";
-    while(N>0) {
-        int system = N % M;
+    std::cout << "Inverse number: ";
+    while (N > 0) {
+        int LastDigit = N % M;
         N /= M;
-        if(system<10)
-        {
-            std::cout<<system;
-        } else
-        {
-            std::cout<<static_cast<char>(system+'a'-10);
+        if (LastDigit < 10) {
+            std::cout << LastDigit;
+        } else {
+            std::cout << static_cast<char>(LastDigit + 'a' - 10);
         }
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
     return 0;
 }
