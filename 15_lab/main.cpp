@@ -4,6 +4,22 @@
 #include <iostream>
 
 int main() {
-    // Решение тут
+    int N, M;
+    std::cout << "Enter the number:";
+    std::cin >> N;
+    std::cout << "Enter the numeral system base (>0):";
+    std::cin >> M;
+    int size = sizeof(N) * 8;
+    for (int i = 0; i < size; i++) {
+        int bit = N % M;
+        N = N / M;
+        if (bit != 0) {
+            if (bit < 10) {
+                std::cout << bit;
+            } else {
+                std::cout << static_cast<char>(bit + 55);
+            }
+        }
+    }
     return 0;
 }
