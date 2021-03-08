@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    short short_num = 0;
+    int int_num = 0;
+    long long_num = 0;
+
+    float float_num = 0;
+    double double_num = 0;
+
+    char character = 0;
+    bool boolean = true;
+
+    cout << "Size of short: " << sizeof(short_num) * 8 << " bits" << endl;
+    cout << "Size of int: " << sizeof(int_num) * 8 << " bits" << endl;
+    cout << "Size of long: " << sizeof(long_num) * 8 << " bits" << endl;
+
+    cout << "Size of float: " << sizeof(float_num) * 8 << " bits" << endl;
+    cout << "Size of double: " << sizeof(double_num) * 8 << " bits" << endl;
+
+    cout << "Size of char: " << sizeof(character) * 8 << " bits" << endl;
+    cout << "Size of bool: " << sizeof(boolean) * 8 << " bits" << endl;
+}
