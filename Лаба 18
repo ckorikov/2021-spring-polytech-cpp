@@ -1,0 +1,90 @@
+// Напишите программу, используя технику TDD. Реализуйте калькулятор,
+// поддерживающий операции: +, -, *, /. Проверьте тестами свойства операций
+// и законы элементарной алгебры.
+#include <iostream>
+#include <cassert>
+
+using namespace std;
+
+double addition(double x, double y) {
+
+    double result = x + y;
+    return result;
+}
+
+double calc(double x, double y) {
+
+    double result_2 = x - y;
+    return result_2;
+}
+
+double division(double x, double y) {
+
+    double result_3 = x / y;
+    return result_3;
+}
+double multiplication(double x, double y) {
+
+    double result_4 = x * y;
+    return result_4;
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    double number_one{ 0.0 };
+    double number_two{ 0.0 };
+    int n;
+    
+    cout << "Введите два числа:" << endl;
+    cin >> number_one;
+    cin >> number_two;
+    cout << "Какую операцию вы хотите ввести? Нажмите - 1 если хотите сложить функции, нажмите - 2 если хотите вычесть, 3 - деление, 4 - умножение, 5 - все операции сразу" << endl;
+    cin >> n;
+
+    switch (n)
+    {
+    case 1:
+        cout << "Результат сложения: " << addition(number_one, number_two) << endl;
+        break;
+    case 2:
+        cout << "Результат вычитания: " << calc(number_one, number_two) << endl;
+        break;
+    case 3:
+        cout << "Результат деления: " << division(number_one, number_two) << endl;
+        break;
+    case 4:
+        cout << "Результат умножения: " << multiplication(number_one, number_two) << endl;
+        break;
+    case 5:
+        cout << "Результат всех операций" << endl;
+        cout << addition(number_one, number_two) << endl;
+        cout << calc(number_one, number_two) << endl;
+        cout << division(number_one, number_two) << endl;
+        cout << multiplication(number_one, number_two) << endl;
+        break;
+    default:
+        cout << "Ошибка!";
+        break;
+    }
+    
+
+    //cout << "Результат сложения: " << addition(number_one, number_two) << endl;// функция сложения
+    //cout << "Результат сложения: " << calc(number_one, number_two) << endl; // функция вычитания
+   // cout << "Результат деления: " << division(number_one, number_two) << endl; // функция деления
+   // cout << "Результат умножения: " << multiplication(number_one, number_two) << endl; // функция умножения
+
+    //Тесты 
+    assert(addition(1.0, 2.0) == 3);
+    assert(calc(100.0,90.0) == 10.0);
+    assert(division(50.0,25.0) == 2.0);
+    assert(multiplication(25.0, 4.0) == 100.0);
+
+    // Коммутативность сложения
+    assert(addition(2.0,4.0) == 6.0);
+    assert(addition(4.0,2.0) == 6.0);
+    //дистрибутивность 
+    assert(multiplication(2.0, 4.0) == 8.0);
+    assert(multiplication(4.0, 2.0) == 8.0);
+    
+    return 0;
+}
