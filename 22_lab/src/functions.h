@@ -1,6 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-// Объявления функций тут
+int searchArray(int array[], int size, int value);
 
 #endif // FUNCTIONS_H
