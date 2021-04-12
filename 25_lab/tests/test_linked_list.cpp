@@ -46,6 +46,9 @@ TEST(testLinkedList, compare) {
     EXPECT_FALSE(compare(lst_a, lst_c));
     EXPECT_FALSE(compare(lst_b, lst_c));
 
+    add(lst_b, 10);
+    EXPECT_FALSE(compare(lst_a, lst_b));
+
     delete_list(lst_a);
     delete_list(lst_b);
     delete_list(lst_c);
@@ -72,8 +75,8 @@ TEST(testLinkedList, merge) {
     for(auto& val: {0, 1, 3, 4, 7, 10}) add(lst_a, val);
     for(auto& val: {2, 5, 6, 8, 9}) add(lst_b, val);
     for(auto& val: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) add(lst_c, val);
-
-    auto merged_lst = concat(lst_a, lst_b);
+    
+    auto merged_lst = merge(lst_a, lst_b);
     EXPECT_TRUE(compare(merged_lst, lst_c));
 
     delete_list(lst_a);
