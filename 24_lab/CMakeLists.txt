@@ -7,7 +7,7 @@ project(${project_name})
 set(CMAKE_CXX_STANDARD 20)
 
 # Library target
-add_library(${project_name} STATIC)
+add_library(${project_name} STATIC src/functions.cpp src/functions.h)
 target_sources(${project_name} PRIVATE src/*исходники*)
 target_include_directories(${project_name} PUBLIC src)
 
