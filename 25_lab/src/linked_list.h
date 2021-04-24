@@ -2,12 +2,12 @@
 #define LINKED_LIST_H
 
 struct ListNode {
-    int data;
-    ListNode *next;
+    int data{};
+    ListNode *next{nullptr};
 };
 
 struct List {
-    ListNode *head;
+    ListNode *head{nullptr};
 };
 
 void print(List &list);
