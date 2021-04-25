@@ -6,15 +6,15 @@
 
 TEST(testCircle, normal) {
     testing::internal::CaptureStdout();
-    Circle a(4);
+    Circle a(2.5);
     a.draw();
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_STREQ(output.c_str(),
-                 "  *  \n"
-                 " *** \n"
-                 "*****\n"
-                 " *** \n"
-                 "  *  \n");
+                 "      *        \n"
+                 "   *  *  *     \n"
+                 "*  *  *  *  *  \n"
+                 "   *  *  *     \n"
+                 "      *        \n");
     }
 
 TEST(testSquare, normal) {
