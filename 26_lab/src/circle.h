@@ -7,7 +7,7 @@
 class Circle : public Shape {
     float radius;
 public:
-    Circle(float r) : radius(r) {}
+    explicit Circle(float r) : radius(r) {}
 
     void draw() override;
 
