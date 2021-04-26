@@ -15,7 +15,40 @@ TEST(testCircle, normal) {
                  "*  *  *  *  *  \n"
                  "   *  *  *     \n"
                  "      *        \n");
-    }
+}
+
+TEST(testCircle, small) {
+    testing::internal::CaptureStdout();
+    Circle a(1.5);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "   *     \n"
+                 "*  *  *  \n"
+                 "   *     \n");
+}
+
+TEST(testCircle, big) {
+    testing::internal::CaptureStdout();
+    Circle a(7);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "                                          \n"
+                 "            *  *  *  *  *  *              \n"
+                 "      *  *  *  *  *  *  *  *  *  *        \n"
+                 "      *  *  *  *  *  *  *  *  *  *        \n"
+                 "   *  *  *  *  *  *  *  *  *  *  *  *     \n"
+                 "   *  *  *  *  *  *  *  *  *  *  *  *     \n"
+                 "   *  *  *  *  *  *  *  *  *  *  *  *     \n"
+                 "   *  *  *  *  *  *  *  *  *  *  *  *     \n"
+                 "   *  *  *  *  *  *  *  *  *  *  *  *     \n"
+                 "   *  *  *  *  *  *  *  *  *  *  *  *     \n"
+                 "      *  *  *  *  *  *  *  *  *  *        \n"
+                 "      *  *  *  *  *  *  *  *  *  *        \n"
+                 "            *  *  *  *  *  *              \n"
+                 "                                          \n");
+}
 
 TEST(testSquare, normal) {
     testing::internal::CaptureStdout();
@@ -30,6 +63,17 @@ TEST(testSquare, normal) {
                  "*  *  *  *  *  \n");
 }
 
+TEST(testSquare, small) {
+    testing::internal::CaptureStdout();
+    Square a(2);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*  *  \n"
+                 "*  *  \n");
+}
+
+
 TEST(testRectangle, normal) {
     testing::internal::CaptureStdout();
     Rectangle a(8, 4);
@@ -42,9 +86,42 @@ TEST(testRectangle, normal) {
                  "*  *  *  *  *  *  *  *  \n");
 }
 
+TEST(testRectangle, long) {
+    testing::internal::CaptureStdout();
+    Rectangle a(7, 2);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*  *  *  *  *  *  *  \n"
+                 "*  *  *  *  *  *  *  \n");
+}
+
+TEST(testRectangle, high) {
+    testing::internal::CaptureStdout();
+    Rectangle a(2, 5);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*  *  \n"
+                 "*  *  \n"
+                 "*  *  \n"
+                 "*  *  \n"
+                 "*  *  \n");
+}
+
+TEST(testRectangle, small) {
+    testing::internal::CaptureStdout();
+    Rectangle a(2, 2);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*  *  \n"
+                 "*  *  \n");
+}
+
 TEST(testLine, normal) {
     testing::internal::CaptureStdout();
-    Line a(0,0,4,4);
+    Line a(0, 0, 4, 4);
     a.draw();
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_STREQ(output.c_str(),
@@ -53,11 +130,29 @@ TEST(testLine, normal) {
                  "      *        \n"
                  "         *     \n"
                  "            *  \n");
+    a.SetXY(0, 0, 1, 1);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*     \n"
+                 "   *  \n");
+    a.SetXY(2, 2, 4, 4);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "               \n"
+                 "               \n"
+                 "      *        \n"
+                 "         *     \n"
+                 "            *  \n");
 }
+
 
 TEST(testLine, invert) {
     testing::internal::CaptureStdout();
-    Line a(0,0,4,4);
+    Line a(4, 4, 0, 0);
     a.draw();
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_STREQ(output.c_str(),
@@ -85,4 +180,32 @@ TEST(testLine, invert) {
                  "   *  \n"
                  "   *  \n"
                  "   *  \n");
+
+    a.SetXY(2, 2, 0, 4);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "         \n"
+                 "         \n"
+                 "      *  \n"
+                 "   *     \n"
+                 "*        \n");
+}
+
+TEST(testLine, not_normal) {
+    testing::internal::CaptureStdout();
+    Line a(0, 0, 4, 1);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STRNE(output.c_str(),
+                 "*  *  *  *  *\n"
+                 "            *  \n");
+    a.SetXY(2, 2, 0, 4);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STRNE(output.c_str(),
+                 "*  *  *  *   \n"
+                 "         *  *  \n");
 }
