@@ -1,16 +1,20 @@
 #include "square.h"
 
 void Square::draw() {
-    char** const arr = createArr(size, size);
+    if (!size)
+        std::cout << ' ' << std::endl;
+    else {
+        char** const arr = createArr(size, size);
 
-    draftLine(arr, 0, 0, size - 1, 0);
-    draftLine(arr, size - 1, 0, size - 1, size - 1);
-    draftLine(arr, 0, size - 1, size - 1, size - 1);
-    draftLine(arr, 0, 0, 0, size - 1);
+        LineInArray(arr, 0, 0, size - 1, 0);
+        LineInArray(arr, size - 1, 0, size - 1, size - 1);
+        LineInArray(arr, 0, size - 1, size - 1, size - 1);
+        LineInArray(arr, 0, 0, 0, size - 1);
 
-    outArr(arr, size, size);
+        outArr(arr, size, size);
+    }
 }
 
-void Square::SetSize(int s) {
+void Square::SetSize(uint32_t s) {
     size = s;
 }

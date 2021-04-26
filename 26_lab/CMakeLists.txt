@@ -7,9 +7,8 @@ project(${project_name})
 set(CMAKE_CXX_STANDARD 20)
 
 # Library target
-add_library(${project_name} STATIC src/shape.cpp src/shape.h src/square.cpp src/square.h
-        src/circle.cpp src/circle.h src/rectangle.cpp src/rectangle.h src/line.cpp src/line.h)
-target_sources(${project_name} PRIVATE)
+add_library(${project_name} STATIC src/shape.h src/square.h src/circle.h src/rectangle.h src/line.h)
+target_sources(${project_name} PRIVATE src/shape.cpp src/square.cpp src/circle.cpp src/rectangle.cpp src/line.cpp)
 target_include_directories(${project_name} PUBLIC src)
 
 # Test target

@@ -4,14 +4,14 @@
 #include "shape.h"
 
 class Rectangle : public Shape {
-    int width;
-    int height;
+    uint32_t width;
+    uint32_t height;
 public:
-    Rectangle(int width, int height): width(width), height(height) {}
+    Rectangle(uint32_t width, uint32_t height): width(width), height(height) {}
 
     void draw() override;
 
-    void SetSize(int w, int h);
+    void SetSize(uint32_t w, uint32_t h);
 };
 
 #endif //INC_26_LAB_RECTANGLE_H

@@ -147,6 +147,13 @@ TEST(testLine, normal) {
                  "      *        \n"
                  "         *     \n"
                  "            *  \n");
+
+    a.SetXY(0, 0, 4, 0);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*  *  *  *  *  \n");
 }
 
 
@@ -199,14 +206,14 @@ TEST(testLine, not_normal) {
     a.draw();
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_STREQ(output.c_str(),
-                 "*  *  *  *     \n"
-                 "            *  \n");
+                 "*  *  *        \n"
+                 "         *  *  \n");
     a.SetXY(1, 2, 4, 0);
     testing::internal::CaptureStdout();
     a.draw();
     output = testing::internal::GetCapturedStdout();
     EXPECT_STREQ(output.c_str(),
                  "            *  \n"
-                 "         *     \n"
-                 "   *  *        \n");
+                 "      *  *     \n"
+                 "   *           \n");
 }

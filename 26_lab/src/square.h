@@ -4,13 +4,13 @@
 #include "shape.h"
 
 class Square : public Shape {
-    int size;
+    uint32_t size;
 public:
-    Square(int s): size(s) {}
+    explicit Square(uint32_t s): size(s) {}
 
     void draw() override;
 
-    void SetSize(int s);
+    void SetSize(uint32_t s);
 };
 
 #endif //INC_26_LAB_SQUARE_H
