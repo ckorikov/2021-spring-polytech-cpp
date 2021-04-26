@@ -130,7 +130,25 @@ TEST(testLine, normal) {
                  "      *        \n"
                  "         *     \n"
                  "            *  \n");
+    a.SetXY(0, 0, 1, 1);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*     \n"
+                 "   *  \n");
+    a.SetXY(2, 2, 4, 4);
+    testing::internal::CaptureStdout();
+    a.draw();
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "               \n"
+                 "               \n"
+                 "      *        \n"
+                 "         *     \n"
+                 "            *  \n");
 }
+
 
 TEST(testLine, invert) {
     testing::internal::CaptureStdout();
@@ -162,23 +180,7 @@ TEST(testLine, invert) {
                  "   *  \n"
                  "   *  \n"
                  "   *  \n");
-    a.SetXY(0, 0, 1, 1);
-    testing::internal::CaptureStdout();
-    a.draw();
-    output = testing::internal::GetCapturedStdout();
-    EXPECT_STREQ(output.c_str(),
-                 "*     \n"
-                 "   *  \n");
-    a.SetXY(2, 2, 4, 4);
-    testing::internal::CaptureStdout();
-    a.draw();
-    output = testing::internal::GetCapturedStdout();
-    EXPECT_STREQ(output.c_str(),
-                 "               \n"
-                 "               \n"
-                 "      *        \n"
-                 "         *     \n"
-                 "            *  \n");
+
     a.SetXY(2, 2, 0, 4);
     testing::internal::CaptureStdout();
     a.draw();
@@ -189,12 +191,21 @@ TEST(testLine, invert) {
                  "      *  \n"
                  "   *     \n"
                  "*        \n");
-    a.SetXY(0, 0, 4, 1);
+}
+
+TEST(testLine, not_normal) {
+    testing::internal::CaptureStdout();
+    Line a(0, 0, 4, 1);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STRNE(output.c_str(),
+                 "*  *  *  *  *\n"
+                 "            *  \n");
+    a.SetXY(2, 2, 0, 4);
     testing::internal::CaptureStdout();
     a.draw();
     output = testing::internal::GetCapturedStdout();
     EXPECT_STRNE(output.c_str(),
-                 "*  *  *  *  *\n"
-                 "            *  \n");
-
+                 "*  *  *  *   \n"
+                 "         *  *  \n");
 }
