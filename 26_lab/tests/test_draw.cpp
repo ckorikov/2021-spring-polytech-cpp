@@ -4,6 +4,7 @@
 #include <square.h>
 #include <line.h>
 
+
 TEST(testCircle, normal) {
     testing::internal::CaptureStdout();
     Circle a(2.5);
@@ -15,6 +16,7 @@ TEST(testCircle, normal) {
                  "*  *  *  *  *  \n"
                  "   *  *  *     \n"
                  "      *        \n");
+
 }
 
 TEST(testCircle, small) {
@@ -50,6 +52,15 @@ TEST(testCircle, big) {
                  "                                          \n");
 }
 
+TEST(testCircle, zero) {
+    testing::internal::CaptureStdout();
+    Circle a(0);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 " \n");
+}
+
 TEST(testSquare, normal) {
     testing::internal::CaptureStdout();
     Square a(5);
@@ -61,6 +72,15 @@ TEST(testSquare, normal) {
                  "*           *  \n"
                  "*           *  \n"
                  "*  *  *  *  *  \n");
+}
+
+TEST(testSquare, zero) {
+    testing::internal::CaptureStdout();
+    Square a(0);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 " \n");
 }
 
 TEST(testSquare, small) {
@@ -84,6 +104,15 @@ TEST(testRectangle, normal) {
                  "*                    *  \n"
                  "*                    *  \n"
                  "*  *  *  *  *  *  *  *  \n");
+}
+
+TEST(testRectangle, zero) {
+    testing::internal::CaptureStdout();
+    Rectangle a(0, 0);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 " \n");
 }
 
 TEST(testRectangle, long) {
@@ -216,4 +245,13 @@ TEST(testLine, not_normal) {
                  "            *  \n"
                  "      *  *     \n"
                  "   *           \n");
+}
+
+TEST(testLine, zero) {
+    testing::internal::CaptureStdout();
+    Line a(0, 0, 0, 0);
+    a.draw();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_STREQ(output.c_str(),
+                 "*  \n");
 }
