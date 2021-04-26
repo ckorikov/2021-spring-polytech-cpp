@@ -22,7 +22,6 @@ void Circle::draw() {
         }
         outArr(arr, diameter, diameter);
     }
-
 }
 
 void Circle::SetRadius(float r) {

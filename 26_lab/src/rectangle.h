@@ -7,7 +7,7 @@ class Rectangle : public Shape {
     uint32_t width;
     uint32_t height;
 public:
-    Rectangle(uint32_t width, uint32_t height): width(width), height(height) {}
+    Rectangle(uint32_t width, uint32_t height) : width(width), height(height) {}
 
     void draw() override;
 

@@ -6,7 +6,7 @@
 class Square : public Shape {
     uint32_t size;
 public:
-    explicit Square(uint32_t s): size(s) {}
+    explicit Square(uint32_t s) : size(s) {}
 
     void draw() override;
 

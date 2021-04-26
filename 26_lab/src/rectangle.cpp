@@ -4,7 +4,7 @@ void Rectangle::draw() {
     if (!height && !width)
         std::cout << ' ' << std::endl;
     else {
-        char** const arr = createArr(height, width);
+        char **const arr = createArr(height, width);
 
         LineInArray(arr, 0, 0, width - 1, 0);
         LineInArray(arr, width - 1, 0, width - 1, height - 1);
@@ -13,7 +13,6 @@ void Rectangle::draw() {
 
         outArr(arr, height, width);
     }
-
 }
 
 void Rectangle::SetSize(uint32_t w, uint32_t h) {
